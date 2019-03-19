@@ -1,17 +1,26 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
+publish {
+    userOrg = _userOrg
+    repoName = _repoName
+    groupId = _groupId
+    artifactId = _artifactId
+    publishVersion = _versionName
+    desc = _desc
+    website = _website
+}
+
 android {
-    compileSdkVersion 28
-
-
+    compileSdkVersion _targetSdkVersion as Integer
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion _minSdkVersion as Integer
+        targetSdkVersion _targetSdkVersion as Integer
+        versionCode _versionCode as Integer
+        versionName _versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -29,11 +38,16 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    // Android Support dependencies
+    implementation "com.android.support:appcompat-v7:$androidVersion"
+
+    // Kotlin dependencies
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // Test dependencies
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
     mavenCentral()
