@@ -80,6 +80,15 @@ class Editor(context: Context, attrs: AttributeSet) : LinearLayout(context, attr
     }
 
     /**
+     * Get number lines widget to access the whole API
+     * Make whatever you want, but keep in mind that you may change default behaviour.
+     * Get Fun!
+     */
+    fun getNumLinesView(): EditorNumberLines {
+        return numLinesView
+    }
+
+    /**
      * Set syntax highlight rules
      * Keep in mind that rules may overlapped highlight of others, so the rule position matter
      * The last rules will overlap the highlight of first ones
