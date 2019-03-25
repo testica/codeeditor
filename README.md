@@ -3,6 +3,12 @@
 
 Code Editor is an Android library that simplify the display of code, making easy syntax highlighting and showing number of lines.
 
+<br/>
+
+<div style="background: white; width: 100%;" align="center">
+    <img src="cover.png" width="500"/>
+</div>
+
 ## Requirements
 - minSdkVersion 15
 - compileSdkVersion 28
