@@ -50,7 +50,7 @@ class EditorText(context: Context, attrs: AttributeSet): EditText(context, attrs
         // TODO: getColor is deprecated
         setBackgroundColor(resources.getColor(android.R.color.transparent))
 
-        delayedTextChanged { applySyntaxHighlight() }
+        addTextChangedListener(afterTextChanged { applySyntaxHighlight() })
     }
 
     /**
