@@ -4,7 +4,6 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
-import java.util.*
 
 
 /**
@@ -15,26 +14,16 @@ fun Int.toDp(context: Context): Int {
 }
 
 /**
- * Extension TextChangedListener but with delay (1 second)
- * @param predicate editable emitted after text changed
+ * Return TextWatcher object with listener on afterTextChanged
+ * @param predicate void
  */
-fun EditorText.delayedTextChanged(predicate: ((Editable?) -> Unit)) {
-    val ms: Long = 1000
-    var timer : Timer? = null
+fun afterTextChanged(predicate: (() -> Unit)): TextWatcher {
 
-    this.addTextChangedListener(object : TextWatcher {
+   return object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        override fun afterTextChanged(s: Editable?) {
-            if (timer != null) timer!!.cancel()
-            timer = Timer()
-            timer!!.schedule(object : TimerTask() {
-                override fun run() {
-                    predicate.invoke(s)
-                }
-            }, ms)
-        }
-    })
+        override fun afterTextChanged(s: Editable?) { predicate.invoke() }
+   }
 }
 
 /**
