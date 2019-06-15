@@ -4,9 +4,11 @@ import android.content.Context
 import android.graphics.Typeface
 import android.support.v4.content.res.ResourcesCompat
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import java.lang.Exception
 
 
 class Editor(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
@@ -33,9 +35,13 @@ class Editor(context: Context, attrs: AttributeSet) : LinearLayout(context, attr
             setTextSize(a.getDimension(R.styleable.Editor_textSize, mTextSize))
 
             // load typeface
-            setTypeface(a.getResourceId(R.styleable.Editor_fontFamily, -1).let {
-                if (it == -1) mTypeface else ResourcesCompat.getFont(context, it)!!
-            })
+            try {
+                setTypeface(a.getResourceId(R.styleable.Editor_fontFamily, -1).let {
+                    if (it == -1) mTypeface else ResourcesCompat.getFont(context, it)!!
+                })
+            } catch (e: Exception) {
+                Log.w("Typeface", e.localizedMessage)
+            }
         }
         finally {
             a.recycle()
