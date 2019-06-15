@@ -19,7 +19,7 @@ Include into the build.gradle file:
 
 ```groovy
 dependencies {
-    implementation 'me.testica:codeeditor:1.0.1'
+    implementation 'me.testica:codeeditor:1.0.2'
 }
 ```
 ## Usage
