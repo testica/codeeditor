@@ -2,13 +2,13 @@ package me.testica.codeeditor
 
 import android.content.Context
 import android.graphics.Color
+import android.support.v7.widget.AppCompatEditText
 import android.text.InputType
 import android.text.Spanned
 import android.text.method.ScrollingMovementMethod
 import android.text.style.ForegroundColorSpan
 import android.util.AttributeSet
 import android.view.Gravity
-import android.widget.EditText
 import java.util.regex.Pattern
 
 
@@ -18,7 +18,7 @@ import java.util.regex.Pattern
  * -> Listener when line count changes
  * -> Listener when vertical scroll changes
  */
-class EditorText(context: Context, attrs: AttributeSet): EditText(context, attrs) {
+class EditorText(context: Context, attrs: AttributeSet): AppCompatEditText(context, attrs) {
 
     private var mNumberLines = 0
 
@@ -100,7 +100,7 @@ class EditorText(context: Context, attrs: AttributeSet): EditText(context, attrs
         if (syntaxHighlightRules.isNullOrEmpty()) return
 
         // first remove all spans
-        text.removeAllSpans()
+        text?.removeAllSpans()
 
         // set span for proper matching according to a rule
         for (syntaxHighlightRule in syntaxHighlightRules!!) {
@@ -109,7 +109,7 @@ class EditorText(context: Context, attrs: AttributeSet): EditText(context, attrs
             // TODO: catch exception
             val matcher = Pattern.compile(syntaxHighlightRule.regex).matcher(text)
 
-            while (matcher.find()) text.setSpan(
+            while (matcher.find()) text?.setSpan(
                 ForegroundColorSpan(color),
                 matcher.start(),
                 matcher.end(),

@@ -1,15 +1,15 @@
 package me.testica.codeeditor
 
 import android.content.Context
+import android.support.v7.widget.AppCompatTextView
 import android.text.method.ScrollingMovementMethod
 import android.util.AttributeSet
 import android.view.Gravity
-import android.widget.TextView
 
 /**
  * Vertical TextView that represent number of lines
  */
-class EditorNumberLines(context: Context, attrs: AttributeSet): TextView(context, attrs) {
+class EditorNumberLines(context: Context, attrs: AttributeSet): AppCompatTextView(context, attrs) {
 
     companion object {
         private const val RIGHT_PADDING = 5
