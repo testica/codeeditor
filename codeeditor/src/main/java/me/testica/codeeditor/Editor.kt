@@ -2,7 +2,7 @@ package me.testica.codeeditor
 
 import android.content.Context
 import android.graphics.Typeface
-import android.support.v4.content.res.ResourcesCompat
+import androidx.core.res.ResourcesCompat
 import android.util.AttributeSet
 import android.util.Log
 import android.util.TypedValue
@@ -29,23 +29,10 @@ class Editor(context: Context, attrs: AttributeSet) : LinearLayout(context, attr
         addEditText()
 
         // Get and set custom attributes
-        val a = context.theme.obtainStyledAttributes(attrs, R.styleable.Editor, 0, 0)
-        try {
+        // val a = context.theme.obtainStyledAttributes(attrs, R.styleable.Editor, 0, 0)
             // load text size
-            setTextSize(a.getDimension(R.styleable.Editor_textSize, mTextSize))
-
-            // load typeface
-            try {
-                setTypeface(a.getResourceId(R.styleable.Editor_fontFamily, -1).let {
-                    if (it == -1) mTypeface else ResourcesCompat.getFont(context, it)!!
-                })
-            } catch (e: Exception) {
-                Log.w("Typeface", e.localizedMessage)
-            }
-        }
-        finally {
-            a.recycle()
-        }
+            setTextSize(mTextSize))
+        
 
         // default attrs
         orientation = HORIZONTAL
