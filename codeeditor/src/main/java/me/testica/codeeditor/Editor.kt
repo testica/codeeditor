@@ -2,12 +2,12 @@ package me.testica.codeeditor
 
 import android.content.Context
 import android.graphics.Typeface
-import android.support.v4.content.res.ResourcesCompat
 import android.util.AttributeSet
 import android.util.Log
 import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.core.content.res.ResourcesCompat
 import java.lang.Exception
 
 
