@@ -2,13 +2,15 @@ package me.testica.codeeditor
 
 import android.content.Context
 import android.graphics.Color
-import android.support.v7.widget.AppCompatEditText
 import android.text.InputType
 import android.text.Spanned
 import android.text.method.ScrollingMovementMethod
 import android.text.style.ForegroundColorSpan
 import android.util.AttributeSet
 import android.view.Gravity
+import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.content.ContextCompat.getColor
+import androidx.core.content.res.ResourcesCompat
 import java.util.regex.Pattern
 
 
@@ -47,8 +49,7 @@ class EditorText(context: Context, attrs: AttributeSet): AppCompatEditText(conte
         inputType = inputType or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
 
         // "Remove" bottom line
-        // TODO: getColor is deprecated
-        setBackgroundColor(resources.getColor(android.R.color.transparent))
+        setBackgroundColor(getColor(context, android.R.color.transparent))
 
         addTextChangedListener(afterTextChanged { applySyntaxHighlight() })
     }
